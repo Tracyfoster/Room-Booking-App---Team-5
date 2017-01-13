@@ -1,36 +1,39 @@
 var rooms = {
     "meetings": {
-          "9am-11am": {"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
+          "9am-11am": {"Room 1"  : 1, "Room 2"  : 0, "Room 3"  : 0,},
           "12noon-2pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
-          "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,}
+          "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 1, "Room 3"  : 0,}
           },
     "games": {
-          "9am-11am": {"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
+          "9am-11am": {"Room 1"  : 0, "Room 2"  : 1, "Room 3"  : 0,},
           "12noon-2pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
-          "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,}
+          "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 1, "Room 3"  : 1,}
           },
     "quiet time": {
           "9am-11am": {"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
-          "12noon-2pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
+          "12noon-2pm":{"Room 1"  : 1, "Room 2"  : 0, "Room 3"  : 0,},
           "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,}
           },
     "learning": {
           "9am-11am": {"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
           "12noon-2pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
-          "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,}
+          "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 1,}
           },
     "working": {
           "9am-11am": {"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
-          "12noon-2pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,},
+          "12noon-2pm":{"Room 1"  : 1, "Room 2"  : 0, "Room 3"  : 1,},
           "3pm-5pm":{"Room 1"  : 0, "Room 2"  : 0, "Room 3"  : 0,}
           }
   };
 
 
 function isAvailable(purpose, timeFrame) {
+    console.log(purpose);
+    console.log(timeFrame);
 	var roomUnavailable = "There is no available room";
 	var roomAvailable = [];
-	var allrooms = rooms[purpose][timeFrame];
+    console.log(rooms);
+	var allrooms = rooms[purpose.toLowerCase()][timeFrame];
 	for (var key in allrooms){
 		if (allrooms[key] === 0 ){
 	  		roomAvailable.push(key);
@@ -42,15 +45,44 @@ function isAvailable(purpose, timeFrame) {
 }
 
 function bookRoom(purpose, timeFrame, roomNumber){
-	var allrooms = rooms[purpose][timeFrame];
+	var allrooms = rooms[purpose.toLowerCase()][timeFrame];
+    console.log(purpose);
+    console.log(timeFrame);
+    console.log(roomNumber);
 	var roomUnavailable = "This room is not available now";
-	for (var key in allroom){
-		if (allroom[key] === 0)	{
-			allroom[key] = 1;
-	      	return "This room has been booked for you";		
-		}
-	}
-	return roomUnavailable;
+	if (allrooms[roomNumber] !== 0 ) {
+        
+        return false;
+    } else {
+        allrooms[roomNumber] = 1;
+        return true;
+    }
   }
+
+
+function renderAvail(rooms) {
+    if (rooms === "There is no available room") {
+        $('#available-rooms').html("<h3>"+rooms+"</h3>");
+    } else {
+        html_str='<select id="roomNum" class="submit-button">';
+        html_str += rooms.map(function(data){
+            if (data) {
+                return ("<option>"+data+"</option>");
+            } else {
+                return "";
+            }
+        });
+        html_str+='</select>';
+        $('#available-rooms').html(html_str);
+    }
 }
 
+function renderMsg(booked, room){
+    if (booked === true) {
+        $('#last-page').css({display:"block"});
+        $('#wrapper').css({display:"none"});
+        $("#last-page-msg").html('<h1>You have booked '+room+ '</h1>');
+    } else {
+        $('#warning-msg').html('<h4>Request not understood or you booked an unavailable room</h4>');
+    }
+}
