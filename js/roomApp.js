@@ -64,7 +64,7 @@ function renderAvail(rooms) {
     if (rooms === "There is no available room") {
         $('#available-rooms').html("<h3>"+rooms+"</h3>");
     } else {
-        html_str='<select id="roomNum" class="submit-button">';
+        html_str='<div><h4>Available rooms('+rooms.length+'): </h4><select id="roomNum" class="select-form">';
         html_str += rooms.map(function(data){
             if (data) {
                 return ("<option>"+data+"</option>");
@@ -72,17 +72,23 @@ function renderAvail(rooms) {
                 return "";
             }
         });
-        html_str+='</select>';
+        html_str+='</select></div>';
         $('#available-rooms').html(html_str);
     }
 }
 
-function renderMsg(booked, room){
+function renderMsg(booked, room, fullname){
     if (booked === true) {
         $('#last-page').css({display:"block"});
         $('#wrapper').css({display:"none"});
-        $("#last-page-msg").html('<h1>You have booked '+room+ '</h1>');
+        $("#last-page-msg").html('<h1>Congratulations '+fullname+' you have booked '+room+ '</h1>');
     } else {
+        $('#warning-msg').css({display:"block"});
         $('#warning-msg').html('<h4>Request not understood or you booked an unavailable room</h4>');
     }
+}
+
+function err(msg) {
+    $('#warning-msg').css({display:"block"});
+    $('#warning-msg').html('<h4>'+msg+'</h4>');
 }

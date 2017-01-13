@@ -5,7 +5,7 @@
 body {
     margin: 0 auto;
     background: url('download.png');
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #container > #wrapper >  #book-form {
@@ -28,6 +28,15 @@ body {
     box-shadow: 0 6px 6px rgba(0,0,0,.3);
     overflow: hidden;
     display:block;
+}
+select {
+	border: none;
+	border-bottom: 3px solid #CCC;
+	padding: 10px;
+	margin: 10px 0;
+	outline:none;
+	width: 40%;
+	display: inline-block;
 }
 
 #select-form {
@@ -106,7 +115,11 @@ header.page-header {
 	display: inline-block;
 }
 
-#form-input {
+#warning-msg {
+    color: red;
+}
+
+.form-input {
 	border: none;
 	border-bottom: 3px solid #CCC;
 	padding: 10px;
@@ -121,7 +134,7 @@ header.page-header {
 	outline:none;
 }
 
-#submit-book {
+.btn-green {
 	padding: 10px;
 	border:none;
 	color:#fff;
@@ -134,7 +147,7 @@ header.page-header {
 	outline:none;
 
 }
-#submit-book:hover {
+.btn-green:hover {
 	background:rgba(51,122,183, 1);
 	outline:none;
 }
