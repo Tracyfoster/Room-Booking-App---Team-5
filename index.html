@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+<!--
+	<div id="wrapper">
+		<div id="background-image">
+			<img src="images/bg.jpg" />
+		</div>
+		<div id="welcome-div">
+			<div>
+
+			</div>
+		</div>
+	</div>
+-->
+<div id="container" >
+	<div id="wrapper">
+		<div id="book-form">
+			<form > 
+				<h1>Book-In</h1>
+                <div class="form-div"> 
+					<input id="fullname" name="fullname" required="required" type="text" placeholder="Enter your fullname" /> 
+				</div>
+				<div class="form-div"> 
+					<label for="email" class="form-label"></label>
+					<input id="email" name="email" required="required" type="email" placeholder="Enter you email"/>
+                </div>
+                <div class="form-div">
+                    <label for="purpose" class="form-label">Purpose:</label>
+					<select name="purpose" id="purpose" class="select-form">
+                        <option>Meetings</option>
+                        <option>Games</option>
+                        <option>Quiet Time</option>
+                        <option>Learning</option>
+                        <option>Working</option>
+                    </select>
+                </div>
+                <div class="form-div">
+                    <label for="checkin" class="form-label">Check-In:</label>
+					<select name="checkin" id="checkin" class="select-form">
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                    </select>
+                </div>
+                <div class="form-div">
+                    <label for="checkout" class="form-label">Check-Out:</label>
+					<select name="checkout" id="checkout" class="select-form">
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                    </select>
+                </div>
+				<div class="submit form-div"> 
+                    <button id="submit-book" type="button" class="btn-green">Submit</button>
+					<!--<input type="submit" value="Login" />--> 
+				</div>
+			</form>
+		</div>
+
+		<div id="room-available" class="animate form">
+			<form  action="mysuperscript.php" autocomplete="on"> 
+				<h1> Sign up </h1> 
+				<p> 
+					<label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+					<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
+				</p>
+				<p> 
+					<label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+					<input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+				</p>
+				<p> 
+					<label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+					<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p> 
+					<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+					<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p class="signin button"> 
+					<input type="submit" value="Sign up"/> 
+				</p>
+				<p class="change_link">  
+					Already a member ?
+					<a href="#tologin" class="to_register"> Go and log in </a>
+				</p>
+			</form>
+		</div>
+		
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#submit-book').click(function(){
+           $('#book-form').css({display:"none"});
+            $('#room-available').css({display:"block"});
+        });
+    })
+</script>
+</body>
+</html>
