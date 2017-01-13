@@ -1,7 +1,21 @@
 body {
     margin: 0 auto;
 }
+#container > #wrapper >  #book-form {
+    width:50%;
+    float: left;
+}
 
 #container > #wrapper >  #room-available {
+    float: right;
+    width:50%;
+    display: block;
+}
+
+#select-form {
+    display: none;
+}
+
+#last-page {
     display: none;
 }
