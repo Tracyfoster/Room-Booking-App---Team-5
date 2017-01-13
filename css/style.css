@@ -1,8 +1,14 @@
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
 body {
     margin: 0 auto;
+    background: url('download.png');
+    overflow-x: hidden;
 }
+
 #container > #wrapper >  #book-form {
-    width:50%;
     float: left;
 }
 
@@ -10,6 +16,18 @@ body {
     float: right;
     width:50%;
     display: block;
+    width: 35%;	
+	padding: 20px;
+	margin: 5% auto;
+	background: rgba(247, 247, 247, .8);
+	box-shadow:	
+		0px 2px 5px rgba(105, 108, 109,  0.7),	
+		0px 0px 8px 5px rgba(208, 223, 226, 0.4);
+	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-width: 1px;
+    box-shadow: 0 6px 6px rgba(0,0,0,.3);
+    overflow: hidden;
+    display:block;
 }
 
 #select-form {
@@ -19,3 +37,105 @@ body {
 #last-page {
     display: none;
 }
+
+.animate-form {
+	float: right;
+}
+
+#wrapper{
+	background: rgba(0,0,0,.6);
+	position: absolute;
+	z-index: -9999;
+	width:100%;
+	height:100%;
+} 
+header.page-header {
+	width: 100%;
+	background: rgba(255, 255, 255, 1);
+	top:0;
+	display:block;
+	margin: 0 0 10px 0;
+	text-align:center;
+	box-shadow: 0 0 4px 0 rgba(0,0,0,.4);
+	border: 1px solid transparent;
+	color:#333;
+
+}
+
+#book-form{
+	
+	width: 35%;	
+	padding: 20px;
+	margin: 5% auto;
+	background: rgba(247, 247, 247, .8);
+	box-shadow:	
+		0px 2px 5px rgba(105, 108, 109,  0.7),	
+		0px 0px 8px 5px rgba(208, 223, 226, 0.4);
+	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-width: 1px;
+    box-shadow: 0 6px 6px rgba(0,0,0,.3);
+    overflow: hidden;
+    display:block;
+}
+
+#book-form-2{
+	float: right;
+}
+
+.form-div {
+	margin: 5px 0;
+	padding: 0 5px;
+}
+
+#book-title {
+	text-align: center;
+	font-weight: 100;
+}
+#book-form label {
+	width: 30%;
+	color:#333;
+}
+
+#book-form select {
+	border: none;
+	border-bottom: 3px solid #CCC;
+	padding: 10px;
+	margin: 10px 0;
+	outline:none;
+	width: 40%;
+	display: inline-block;
+}
+
+#form-input {
+	border: none;
+	border-bottom: 3px solid #CCC;
+	padding: 10px;
+	margin: 10px 0;
+	outline:none;
+	width: 40%;
+	display: inline-block;
+}
+
+#book-form select:hover, #book-form select:focus {
+	border-bottom: 3px solid #f90;
+	outline:none;
+}
+
+#submit-book {
+	padding: 10px;
+	border:none;
+	color:#fff;
+	background:rgba(51,122,183, .7);
+	font:bold;
+	cursor:pointer;
+	margin: 20px auto;
+	width: 50%;
+	display:block;
+	outline:none;
+
+}
+#submit-book:hover {
+	background:rgba(51,122,183, 1);
+	outline:none;
+}
+
