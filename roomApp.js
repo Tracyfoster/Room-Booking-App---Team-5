@@ -31,9 +31,9 @@ function isAvailable(purpose, timeFrame) {
 	var roomUnavailable = "There is no available room";
 	var roomAvailable = [];
 	var allrooms = rooms[purpose][timeFrame];
-	for (var key in allroom){
-		if (allroom[key] ===0 )	{
-  		roomAvailable.push(allroom.key);
+	for (var key in allrooms){
+		if (allrooms[key] === 0 ){
+	  		roomAvailable.push(key);
 		}
 	}   
 	if (roomAvailable.length > 0) {
@@ -45,12 +45,12 @@ function bookRoom(purpose, timeFrame, roomNumber){
 	var allrooms = rooms[purpose][timeFrame];
 	var roomUnavailable = "This room is not available now";
 	for (var key in allroom){
-		if (allroom[key] ===0 )	{
-		  allroom[key] = 1;
-      return "This room has been booked for you";		
+		if (allroom[key] === 0)	{
+			allroom[key] = 1;
+	      	return "This room has been booked for you";		
 		}
-	else 
-		return roomUnavailable;
+	}
+	return roomUnavailable;
   }
 }
 
