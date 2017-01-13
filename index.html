@@ -48,17 +48,16 @@
             <form  id="select-form" class="booking-form"> 
 				 
 				<div class="form-div">
-					<input id="form-input" name="fullname" required="required" type="text" placeholder="Enter your name" />
+					<input id="fullname" class="form-input" name="fullname" required="required" type="text" placeholder="Enter your name" />
 				</div>
 				<div> 
-					<input id="form-input" name="email" required="required" type="email" placeholder="Enter your email"/> 
+					<input id="email" class="form-input" name="email" required="required" type="email" placeholder="Enter your email"/> 
 				</div>
 				<div id="available-rooms">
-                
-                
-                </div class="form-div">
+    
+                </div >
 				<div>
-                    <button id="submit-book" type="button" class="btn-green">Checkout</button>
+                    <button id="checkout" type="button" class="btn-green">Checkout</button>
                 </div>
 			</form>
             <div id="warning-msg"></div>
@@ -66,7 +65,7 @@
 		
 	</div>
     <div id="last-page">
-        <button type="button" class="submit-button" id="back">Back</button>
+        <button type="button" class="btn-green" id="back">Back</button>
         <div id="last-page-msg"></div>
     </div>
 </div>
@@ -78,20 +77,28 @@
             $('#no-room-select').css({display:'none'});
             $('#select-form').css({display:'block'});
             var purpose = $("#purpose").val();
-            var timeframe = $("#timeframe").val();
+            var timeframe = $("#checkin").val();
             var rooms = isAvailable(purpose, timeframe);
             renderAvail(rooms);
             
         });  
         $('#checkout').click(function(){
-            
-            var purpose = $("#purpose").val();
-            var timeframe = $("#timeframe").val();
-            var roomNum = $('#roomNum').val();
-            var booked = bookRoom(purpose, timeframe, roomNum);
-            renderMsg(booked, roomNum);
+            var fullname = $('#fullname').val();
+            var email = $("#email").val();
+            if (fullname.length < 3) {
+                err('Sorry a valid name is needed to complete your request');
+            } else if (email.length < 3) {
+                err('Sorry a valid email is needed to complete your request')
+            } else {
+                var purpose = $("#purpose").val();
+                var timeframe = $("#checkin").val();
+                var roomNum = $('#roomNum').val();
+                var booked = bookRoom(purpose, timeframe, roomNum);
+                renderMsg(booked, roomNum, fullname);
+            }
         });
         $('#back').click(function(){
+            $('#warning-msg').css({display:"none"});
             $("#wrapper").css({display:"block"});
             $("#last-page").css({display:"none"});
         })
