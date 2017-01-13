@@ -1,0 +1,7 @@
+body {
+    margin: 0 auto;
+}
+
+#container > #wrapper >  #room-available {
+    display: none;
+}
